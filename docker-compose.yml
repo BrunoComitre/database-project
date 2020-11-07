@@ -1,0 +1,108 @@
+version: '3.7'
+services:
+  couchdbsec:
+    build: 
+      context: ./couchdb
+    container_name: couchdbsec
+    restart: always
+    environment:
+      - COUCHDB_USER=
+      - COUCHDB_PASSWORD=
+      - TZ=America/Sao_Paulo
+#     env_file:
+#       - .env
+    ports:
+      - "5980:5980"
+    volumes:
+      - "../couch/data:/opt/couchdb/data"
+    networks:
+      - security-network
+  mongodbsec:
+    build: 
+      context: ./mongodb
+    container_name: mongodbsec
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=
+      - MONGO_INITDB_ROOT_PASSWORD=
+      - TZ=America/Sao_Paulo
+#     env_file:
+#       - .env
+    ports:
+      - "27017:27017"
+    volumes:
+      # - "../mongodb:/data/db"
+      - mongo_data:/data/db
+      - mongo_data:/var/www/html
+    networks:
+      - security-network
+  mongosec-express:
+      image: mongo-express
+      container_name: mongoexpresssec
+      restart: always
+      environment:
+          - ME_CONFIG_BASICAUTH_USERNAME=
+          - ME_CONFIG_BASICAUTH_PASSWORD=
+          - ME_CONFIG_MONGODB_PORT=
+          - ME_CONFIG_MONGODB_ADMINUSERNAME=
+          - ME_CONFIG_MONGODB_ADMINPASSWORD=
+          - ME_CONFIG_MONGODB_SERVER=
+#     env_file:
+#       - .env
+      links:
+          - mongodbsec
+      ports:
+          - "8081:8081"
+      networks:
+          - fastapi-network
+  postgressec:
+    restart: always
+    build: 
+      context: ./postgres
+    container_name: postgressec
+    volumes:
+      # - ../postgres:/var/lib/postgres
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=
+      - POSTGRES_ADMIN_USER=
+      - POSTGRES_ADMIN_PASSWORD=
+      - TZ=America/Sao_Paulo
+#     env_file:
+#       - .env
+    ports:
+      - "8060:8060"
+    networks:
+      - security-network
+  pgadmin:
+      image: dpage/pgadmin4
+      container_name: pgadminsec
+      env_file:
+          - .env
+      ports:
+          - "16543:80"
+      depends_on:
+          - postgressec
+      networks:
+          - security-network
+  redissec:
+    build: 
+      context: ./redis
+    container_name: redissec
+    restart: always
+    environment: 
+      - TZ=America/Sao_Paulo
+#     env_file:
+#       - .env
+    ports:
+      - "6379:6379"
+    networks:
+      - security-network
+
+volumes:
+  postgres_data:
+  mongo_data:
+    
+networks:
+  security-network:
+    driver: external 
