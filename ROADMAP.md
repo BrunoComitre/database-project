@@ -7,13 +7,19 @@ Como um projeto que poderá ter continuidade, segue algumas ideias de implementa
 - Essencial
   - [ ] Existe aplicação TDD outside In, DDD, BDD no Docker
   - [ ] Ver requirements para Docker
-  - [ ] Definir ambientes desenvolvimento, qa, staging, production, teste
-  - [ ] Documentar
+  - [ ] IMplementar Mongo-Express
+  - [ ] Definir senhas e usuários especificos para ambientes
+  - [ ] Melhora Documentação
   - [ ] O nome do arquivo no banco de dados e pesquisa junto a Data/hora modificada
   - [ ] Armazene/exiba estatísticas do arquivo carregado
   - [ ] Uploads subsequentes
   - [ ] Adicionar extração via PDF
   - [ ] Adicionar movimento via drag and drop
   - [ ] Armazenamento de imagens
+  - [ ] Kubernets
+- Done
+  - [x] Definir ambientes desenvolvimento, qa, staging, production, test
+  - [x] Documentar
 
 ***
+

@@ -390,7 +390,7 @@ FodyWeavers.xsd
 *.sln.iml
 
 # Environments
-# .env
+.env
 .venv
 env/
 venv/
@@ -402,9 +402,9 @@ venv.bak/
 *.pkl
 app/.env
 draft/
+mongo_data/
 
 # Backup
-
 *.bak
 *.gho
 *.ori
