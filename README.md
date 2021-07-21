@@ -28,14 +28,6 @@ This README is intended to guide how this project is structured and should serve
 
 &nbsp;
 
-## Initial setting
-
-If you have no idea how to install MongoDB and run it locally, go to the [MongoDB](https://docs.mongodb.com/manual/tutorial/) link.
-
-If you have MongoDB configured locally, in the project's root folder, install the application's dependencies.
-
-***
-
 ## Contribution & Best Practices
 
 For contribution guidelines, check [CONTRIBUTING.md](https://github.com/BrunoComitre/database-project/blob/main/CONTRIBUTING.md) or [CODE.md](https://github.com/BrunoComitre/database-project/blob/main/CODE.md) for coding styles.
