@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+    couchdb:
+        container_name: container-couchdb
+        build:
+            dockerfile: Dockerfile
+            context: ./couchdb
+        restart: always
+        ports:
+            - 5984:5984
+        environment:
+            - COUCHDB_USER=root
+            - COUCHDB_PASSWORD=password
+            - COUCHDB_HOSTNAME=couchdb
+            - COUCHDB_DATABASE=root-db
+            - NODENAME=couchdb-0.io-server
+            - COUCHDB_SECRET=couchdb
+            - TZ=America/Sao_Paulo
+        # env_file:
+        #     - .env
+        volumes:
+            - ./couchdb_data:/opt/couchdb/data
+            - ./couchdb_data/etc:/opt/couchdb/etc
+        networks:
+            - couchdb-network
+
+networks:
+    couchdb-network:
+        external: true
+
+volumes:
+    couchdb_data:

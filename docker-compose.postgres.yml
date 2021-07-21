@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+    postgres:
+        container_name: container-postgres
+        build:
+            dockerfile: Dockerfile
+            context: ./postgres
+        restart: always
+        ports:
+            - 5432:5432
+        environment:
+            - POSTGRES_USER=root
+            - POSTGRES_PASSWORD=password
+            - POSTGRES_DB=root-db
+            - PGDATA=/data/postgres
+            - TZ=America/Sao_Paulo
+        # env_file:
+        #     - .env
+        volumes:
+            - ./postgres_data:/data/db
+        networks:
+            - postgres-network
+
+networks:
+    postgres-network:
+        external: true
+
+volumes:
+    postgres_data:

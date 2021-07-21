@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+    redis:
+        container_name: container-redis
+        build:
+            dockerfile: Dockerfile
+            context: ./redis
+        restart: always
+        ports:
+            - 6379:6379
+        environment:
+            - REDIS_HOST=redis
+            - TZ=America/Sao_Paulo
+        # env_file:
+        #     - .env
+        volumes:
+            - ./redis_data:/data/db
+        networks:
+            - redis-network
+
+networks:
+    redis-network:
+        external: true
+
+volumes:
+    redis_data:
