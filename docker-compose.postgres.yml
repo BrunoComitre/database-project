@@ -8,7 +8,7 @@ services:
             context: ./postgres
         restart: always
         ports:
-            - 5432:5432
+            - 15432:5432
         environment:
             - POSTGRES_USER=root
             - POSTGRES_PASSWORD=password
@@ -23,10 +23,10 @@ services:
             - postgres-network
 
     pgadmin:
-        image: dpage/pgadmin4:latest
+        image: dpage/pgadmin4
         container_name: container-pgadmin-postgres
         environment:
-          PGADMIN_DEFAULT_EMAIL: "bruno-comitre@hotmail.com.br"
+          PGADMIN_DEFAULT_EMAIL: "bruno-comitre@hotmail.com"
           PGADMIN_DEFAULT_PASSWORD: "password"
         ports:
           - "16543:80"
