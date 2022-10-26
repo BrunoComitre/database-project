@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+    minio:
+        container_name: container-minio
+        build:
+            dockerfile: Dockerfile
+            context: ./minio
+        restart: unless-stopped
+        command: server /data --console-address ":9001"
+        ports:
+          - "9000:9000"
+          - "9001:9001"
+        environment:
+          MINIO_ROOT_USER: minioadmin
+          MINIO_ROOT_PASSWORD: minioadmin
+          MINIO_REGION_NAME: us-east-1
+        healthcheck:
+          test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+          interval: 30s
+          timeout: 20s
+          retries: 3
+
+networks:
+    minio-network:
+        external: true
+
+volumes:
+    minio_data:
