@@ -7,7 +7,7 @@ Como um projeto que poderá ter continuidade, segue algumas ideias de implementa
 - Essencial
   - [ ] Existe aplicação TDD outside In, DDD, BDD no Docker
   - [ ] Ver requirements para Docker
-  - [ ] IMplementar Mongo-Express
+  - [ ] Implementar Mongo-Express
   - [ ] Definir senhas e usuários especificos para ambientes
   - [ ] Melhora Documentação
   - [ ] O nome do arquivo no banco de dados e pesquisa junto a Data/hora modificada
@@ -18,13 +18,11 @@ Como um projeto que poderá ter continuidade, segue algumas ideias de implementa
   - [ ] Armazenamento de imagens
   - [ ] Kubernets
 - Done
-  - [x] Definir ambientes desenvolvimento, qa, staging, production, test
-  - [x] Documentar
+  - [ ] Definir ambientes desenvolvimento, qa, staging, production, test
+  - [ ] Documentar
 
 ***
 
-<<<<<<< HEAD
-=======
 ## Confira 8 boas práticas do MongoDB!
 
 Retirado de: [MongoDB: o que é e como usar o banco de dados NoSQL?](https://blog.betrybe.com/dados/mongodb-tudo-sobre/)
@@ -32,12 +30,12 @@ Retirado de: [MongoDB: o que é e como usar o banco de dados NoSQL?](https://blo
 ### 1 - Use compressão e otimize recursos
 O MongoDB possui um serviço de compressão robusto implementado no seu motor de armazenamento WiredTiger que encurta nomes, mas se você quiser melhorar ainda mais a performance, evite campos com nomes grandes.
 
-Outra boa prática para otimização de recursos é separar o armazenamento, a maior parte do acesso aos dados terá um desempenho melhor em discos de acesso aleatório como SSDs porém, o Mongo armazena os ‘logs’ de forma sequencial podendo estes serem armazenados em discos tradicionais como RAID.
+Outra boa prática para otimização de recursos é separar o armazenamento, a maior parte do acesso aos dados terá um desempenho melhor em discos de acesso aleatório como SSDs porém, o Mongo armazena os 'logs' de forma sequencial podendo estes serem armazenados em discos tradicionais como RAID.
 
 ### 2 - Execute um único MongoDB por servidor
 Aqui é preciso deixar expícito que não estamos falando sobre clusterização ou sharding como já foi falado nesse artigo. O que estamos falando aqui é da execução do mesmo processo mongod executado lado a lado no mesmo servidor.
 
-Isso é considerado uma má prática, pois haverá um tipo de ‘concorrência’ pelos recursos do servidor resultando em uma perda geral de desempenho.
+Isso é considerado uma má prática, pois haverá um tipo de 'concorrência' pelos recursos do servidor resultando em uma perda geral de desempenho.
 
 ### 3 - Armazene os dados do registro em um único documento
 Uma das fraquezas do MongoDB é a inconsistência dos dados. Se eles estiverem espalhados em diferentes documentos, o risco de isso acontecer aumenta.
@@ -51,7 +49,7 @@ Apesar do MongoDB possuir uma boa compressão para gerenciamento de arquivos bin
 Existem vários problemas em utilizar informações desnecessárias em um banco de dados, desde perda de performance até complexidade de manutenção. Geralmente, um banco com muitos dados desnecessários é resultado de uma má modelagem. Na dúvida, vale rever a regra de negócio.
 
 ### 6 - Use covered queries quando possível
-Segundo a documentação do MongoDB, uma busca coberta (covered query) pode ser usada quando: ‘Todos os campos da consulta são partes do índice’ e ‘todos os campos na mesma consulta retornam o índice’.
+Segundo a documentação do MongoDB, uma busca coberta (covered query) pode ser usada quando: 'Todos os campos da consulta são partes do índice' e 'todos os campos na mesma consulta retornam o índice'.
 
 Caso esses requisitos sejam atendidos, usar um índice pode dar um grande ganho de desempenho na busca, visto que o mongo não precisará mais ler estes dados, somente extraí-los do índice, o que é muito mais rápido.
 
@@ -68,4 +66,3 @@ Devemos sempre medir as necessidades do nosso negócio ao escolher qual tipo de 
 Algumas aplicações dependem de relacionamentos específicos que são mais consistentes em bancos SQL, aplicações mais simples ou legadas podem funcionar melhor com bancos tradicionais e uma migração pode se tornar um trabalho dispendioso ou desnecessário.
 
 ***
->>>>>>> 979cf0db2b86f0d6e439fcadd231f31d376ef2a5
