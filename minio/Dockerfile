@@ -1,3 +1,1 @@
-FROM minio:latest
-
-RUN apt install tzdata
+FROM minio/minio:latest
